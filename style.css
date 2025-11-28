@@ -1,0 +1,21 @@
+body {
+    background-color: #f0f0f0; 
+    color: #333; 
+    font-family: Arial, sans-serif;
+    padding: 20px; /* Ajout d'un peu d'espace autour du corps */
+}
+
+/* NOUVELLE RÈGLE : Centrer le contenu et limiter la largeur */
+.container {
+    max-width: 800px; /* Limite la largeur du contenu à 800 pixels */
+    margin: 0 auto; /* C'est la ligne magique pour centrer un bloc */
+    background-color: white; /* Donne un fond blanc au contenu centré */
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajoute une légère ombre */
+    border-radius: 8px; /* Coins légèrement arrondis */
+}
+
+h1 {
+    color: #007bff; 
+    text-align: center; /* Centrer le titre dans le conteneur */
+}
