@@ -8,7 +8,7 @@ STYLE.CSS - BLOG ÉPURÉ EN DEUX COLONNES
 body {
     font-family: Arial, sans-serif;
     color: #333;
-    background-color: #f7f7f7; /* Fond très clair */
+    background-color: white; /* MODIFIÉ : Fond blanc pour tout le site */
     line-height: 1.6;
     margin: 0;
 }
@@ -81,7 +81,7 @@ header {
 .main-content {
     flex: 3; 
     padding-right: 40px;
-    background-color: white; 
+    background-color: white; /* Assuré que c'est blanc */
     border-radius: 4px;
     padding: 20px;
 }
@@ -155,11 +155,11 @@ header {
 
 /* -- 5. STYLE DE LA COLONNE LATÉRALE (SIDEBAR) -- */
 .widget {
-    background-color: white;
+    background-color: white; /* Assuré que c'est blanc */
     padding: 15px;
     border-radius: 4px;
     margin-bottom: 20px;
-    border: 1px solid #eee;
+    border: 1px solid #eee; /* La bordure reste pour séparer visuellement */
 }
 
 .widget h3 {
@@ -220,4 +220,71 @@ header {
         height: auto;
         max-height: 200px;
     }
+}
+
+/* ==================================== */
+/* 7. STYLE DE LA PAGE ARTICLE UNIQUE   */
+/* ==================================== */
+
+/* 1. Sur la page d'article, nous désactivons le display: flex pour le wrapper... */
+.single-post-wrapper {
+    display: block; 
+}
+
+/* ...et masquons la sidebar (puisqu'elle est retirée du HTML, c'est juste une précaution) */
+.single-post-wrapper .sidebar {
+    display: none;
+}
+
+/* 2. Le main-content prend toute la largeur du container */
+.single-post-wrapper .main-content {
+    max-width: 900px; /* Limiter la largeur de lecture pour le confort (900px) */
+    width: 100%;
+    padding: 30px;
+}
+
+/* Titre et Métadonnées */
+.article-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000000; /* Assurer que le titre est noir */
+}
+
+.article-meta {
+    font-size: 0.9em;
+    color: #989898; /* Date en gris */
+    margin-bottom: 30px;
+    display: block;
+}
+
+/* 3. COULEUR ET TAILLE DU TEXTE PRINCIPAL */
+.article-body p {
+    font-size: 1.15em; /* Grande taille pour la lisibilité */
+    color: #555555; /* MODIFIÉ : Gris foncé pour le confort de lecture */
+    margin-bottom: 25px;
+}
+
+.article-body a {
+    color: #176B87; /* Lien toujours en bleu pour le différencier */
+}
+
+.article-body h2 {
+    font-size: 1.8em;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 5px;
+}
+
+.article-body h3 {
+    font-size: 1.4em;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.back-link {
+    font-size: 1.1em;
+    display: inline-block;
+    padding: 10px 0;
 }
