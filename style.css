@@ -1,21 +1,223 @@
+/*
+====================================
+STYLE.CSS - BLOG ÉPURÉ EN DEUX COLONNES
+====================================
+*/
+
+/* -- 1. GÉNÉRAL ET TYPOGRAPHIE -- */
 body {
-    background-color: #f0f0f0; 
-    color: #333; 
     font-family: Arial, sans-serif;
-    padding: 20px; /* Ajout d'un peu d'espace autour du corps */
+    color: #333;
+    background-color: #f7f7f7; /* Fond très clair */
+    line-height: 1.6;
+    margin: 0;
 }
 
-/* NOUVELLE RÈGLE : Centrer le contenu et limiter la largeur */
 .container {
-    max-width: 800px; /* Limite la largeur du contenu à 800 pixels */
-    margin: 0 auto; /* C'est la ligne magique pour centrer un bloc */
-    background-color: white; /* Donne un fond blanc au contenu centré */
-    padding: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajoute une légère ombre */
-    border-radius: 8px; /* Coins légèrement arrondis */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-h1 {
-    color: #007bff; 
-    text-align: center; /* Centrer le titre dans le conteneur */
+a {
+    color: #176B87; /* Bleu foncé pour les liens */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* MODIFICATION 1 : TOUS LES TITRES EN SANS-SERIF ET EN NOIR */
+h1, h2, h3 {
+    font-family: Arial, sans-serif; /* MODIFIÉ : Sans serif pour tous les titres */
+    color: #000000; /* Noir pur pour tous les titres */
+    margin-top: 0;
+}
+
+/* -- 2. EN-TÊTE (HEADER) -- */
+header {
+    background-color: white;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.header-container {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 4px;
+    margin-right: 20px;
+    object-fit: cover;
+}
+
+.site-info h1 {
+    font-size: 2.2em;
+    margin: 0;
+}
+
+.tagline {
+    font-size: 0.9em;
+    color: #666;
+    margin: 5px 0 0 0;
+}
+
+/* -- 3. MISE EN PAGE PRINCIPALE (2 COLONNES) -- */
+.content-wrapper {
+    display: flex;
+    padding-top: 30px;
+}
+
+.main-content {
+    flex: 3; 
+    padding-right: 40px;
+    background-color: white; 
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.sidebar {
+    flex: 1; 
+    padding-left: 20px;
+}
+
+/* -- 4. STYLE DES ARTICLES -- */
+.main-content h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Texte secondaire gris */
+.post-meta {
+    font-size: 0.85em;
+    color: #989898; 
+    margin-bottom: 5px;
+}
+
+.post-details {
+    display: flex;
+    gap: 15px; 
+}
+
+.post-thumbnail {
+    /* MODIFIÉ : Largeur fixée à 120px */
+    width: 120px; 
+    /* MODIFIÉ : Hauteur ajustée pour conserver le ratio, ou fixée */
+    height: 80px; /* J'ai ajusté la hauteur à 80px pour un ratio harmonieux avec 120px */
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.post-summary {
+    flex-grow: 1;
+}
+
+/* MODIFICATION 2 : Assurer que le lien du titre d'article est noir */
+.post-summary h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.2em;
+}
+
+.post-summary h3 a {
+    color: #000000; /* MODIFIÉ : Titre de l'article en noir, même si c'est un lien */
+}
+
+/* Texte de résumé gris */
+.post-summary p {
+    font-size: 0.95em;
+    margin: 0;
+    color: #989898; 
+    /* Limiter la description à 3 lignes pour un effet propre */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Ligne séparatrice fine */
+.post-item hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 20px 0 0 0;
+}
+
+/* -- 5. STYLE DE LA COLONNE LATÉRALE (SIDEBAR) -- */
+.widget {
+    background-color: white;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+}
+
+.widget h3 {
+    font-size: 1.1em;
+    color: #000000; 
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+/* MODIFICATION 3 : Texte du widget en gris */
+.widget p,
+.widget ul li {
+    font-size: 0.9em;
+    color: #989898; /* MODIFIÉ : Texte du widget en gris */
+}
+
+.widget ul {
+    list-style: none;
+    padding: 0;
+}
+
+.widget ul li a {
+    color: #989898; /* MODIFIÉ : Assurer que le lien reste gris, sinon il prend la couleur 'a' par défaut */
+}
+
+.widget ul li {
+    margin-bottom: 5px;
+}
+
+/* ==================================== */
+/* 6. RESPONSIVE DESIGN (Pour Mobile)   */
+/* ==================================== */
+
+@media (max-width: 900px) {
+    
+    /* Pour les écrans de 900px et moins, les colonnes s'empilent */
+    .content-wrapper {
+        flex-direction: column; /* Les éléments vont en colonne plutôt qu'en ligne */
+    }
+
+    .main-content {
+        padding-right: 20px; /* Réduire l'espace en trop */
+    }
+
+    .sidebar {
+        padding-left: 20px; /* S'assurer que le padding est uniforme */
+        margin-top: 20px; /* Ajouter un espace au-dessus de la colonne latérale */
+    }
+
+    /* Ajuster la vignette des articles pour mobile */
+    .post-details {
+        flex-direction: column;
+    }
+    
+    .post-thumbnail {
+        width: 100%; /* La vignette prend toute la largeur */
+        height: auto;
+        max-height: 200px;
+    }
 }
